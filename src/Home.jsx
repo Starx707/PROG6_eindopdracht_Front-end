@@ -4,7 +4,6 @@ import {Link, Outlet} from "react-router";
 function Home() {
 
     const [dragons, setDragon] = useState(null);
-
     useEffect(() => {
         async function fetchProduct() {
             try {
@@ -23,7 +22,7 @@ function Home() {
         }
 
         fetchProduct();
-    }, []); // Lege array zorgt ervoor dat useEffect alleen bij de eerste render wordt uitgevoerd.
+    }, []);
 
     return (
         <>
@@ -37,7 +36,6 @@ function Home() {
                                 <p>{dragon.dClass}</p>
                                 <p>{dragon.origin}</p>
                                 <p>{dragon.trainability}</p>
-                                {/*create a delete button that refers to a different component? ✏️*/}
                                 <Link to={`/dragons/${dragon.id}`}>See details</Link>
 
                             </div>

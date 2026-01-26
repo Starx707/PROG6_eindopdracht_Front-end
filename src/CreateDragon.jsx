@@ -5,7 +5,7 @@ function CreateProduct() {
 
     const navigate = useNavigate();
 
-    async function createProduct() {
+    async function createDragon() {
         try {
             const response = await fetch("http://145.24.237.150:8001/dragons/", {
                 headers: {
@@ -46,7 +46,7 @@ function CreateProduct() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        createProduct();
+        createDragon();
         console.log("Form send:", formData);
     };
 

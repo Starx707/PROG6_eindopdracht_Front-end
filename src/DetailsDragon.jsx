@@ -80,6 +80,7 @@ function Details() {
                         <div>{detailsContainer.trainability}</div>
                     </div>
                     <Link to={`/delete/${detailsContainer.id}`}>Delete</Link>
+                    <Link to={`/update/${detailsContainer.id}`}>Change</Link>
                 </article>
             ) : (
                 <div>Loading data...</div>

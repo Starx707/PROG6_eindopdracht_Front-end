@@ -4,6 +4,7 @@ import Layout from "./Layout.jsx";
 import CreateDragon from "./CreateDragon.jsx";
 import DetailsDragon from "./DetailsDragon.jsx";
 import DeleteDragon from "./DeleteDragon.jsx";
+import UpdateDragon from "./UpdateDragon.jsx";
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: "/delete/:id",
                 element: <DeleteDragon/>,
+            },
+            {
+                path: "/update/:id",
+                element: <UpdateDragon/>,
             },
         ],
     },
