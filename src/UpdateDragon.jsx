@@ -59,16 +59,12 @@ function UpdateDragon() {
     }, []);
 
     const handleInputChange = (e) => {
-        const {species, value} = e.target; //doesn't work here either
+        const {name, value} = e.target; //doesn't work here either
         setFormData({
             ...formData,
-            [species]: value,
+            [name]: value,
         });
-        console.log(formData);
-        console.log(value);
     };
-
-    //last resort: make seperate functions for demonstration and show problem
 
     const handleSubmit = (event) => {
         event.preventDefault();

@@ -36,9 +36,9 @@ function Home() {
                                 <div className="corner bottom left"></div>
                                 <div className="corner bottom right"></div>
                                 <h1>{dragon.species}</h1>
-                                <p>{dragon.dClass}</p>
-                                <p>{dragon.origin}</p>
-                                <p>{dragon.trainability}</p>
+                                <p>Dragon class: {dragon.dClass}</p>
+                                <p>Origins: {dragon.origin}</p>
+                                <p>Trainability: {dragon.trainability}</p>
 
                                 <button>
                                     <span className="left"></span>
