@@ -15,7 +15,6 @@ function Home() {
                 });
                 const data = await response.json();
                 setDragon(data.items);
-                console.log(data.items); //shows all the data
             } catch (error) {
                 console.error("There was a problem gathering the books:", error);
             }

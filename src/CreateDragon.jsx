@@ -35,12 +35,12 @@ function CreateProduct() {
     });
 
     const handleInputChange = (e) => {
-        const {species, value} = e.target; //this doesn't work? why?
+        const {dClass, value} = e.target; //this doesn't work? why?
         setFormData({
             ...formData,
-            [species]: value,
+            [dClass]: value,
         });
-        console.log(formData.species);
+        console.log(formData.dClass);
         console.log(value);
     };
 

@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router";
 
 function UpdateDragon() {
 
-    const [dragonDetails, setdragonDetails] = useState(null);
+    const [dragonDetail, setDragonDetails] = useState(null);
     const navigate = useNavigate();
     const params = useParams();
 
@@ -16,8 +16,8 @@ function UpdateDragon() {
             });
 
             const data = await response.json();
-            setdragonDetails(data);
-            console.log(data);
+            setDragonDetails(data);
+            console.log(dragonDetail);
         } catch (e) {
             console.log(e);
         }
@@ -30,9 +30,9 @@ function UpdateDragon() {
     //update data through this
     async function updateDragon() {
         try {
-            const response = await fetch("http://145.24.237.150:8001/dragons/", {
+            const response = await fetch(`http://145.24.237.150:8001/dragons/${params.id}`, {
                 headers: {
-                    Accept: "application/json",
+                    "Accept": "application/json",
                     "Content-Type": "application/json",
                 },
                 method: "PUT",
@@ -45,14 +45,15 @@ function UpdateDragon() {
                 navigate(`/dragons/${data.id}`);
             } else {
                 console.log("Not quite what was expected: ", response.status);
+                // console.log(`this is what we're sending: ${formData}`)
             }
         } catch (e) {
             console.error("Er is een fout opgetreden:", e);
         }
     }
 
-    const [formData, setFormData] = useState({
-        species: "New",
+    const [formData, setFormData] = useState({ //give this what we got from fetch
+        species: `New`, //${dragonDetails}
         desc: "New",
         dClass: "New",
     });

@@ -17,9 +17,6 @@ function DeleteDragon() {
             });
 
             if (response.status === 204) {
-                console.log("a success!")
-                //return to overview
-                console.log("now redirect...")
                 navigate(`/`);
             } else {
                 console.log(response.status);

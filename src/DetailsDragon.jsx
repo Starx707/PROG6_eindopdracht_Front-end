@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router";
+import {Link, useNavigate, useParams} from "react-router";
 
 function Details() {
     const [detailsContainer, setdetailsContainer] = useState(null);
     const params = useParams();
+    const navigate = useNavigate();
 
     const loadDetails = async () => {
         try {
@@ -39,6 +40,7 @@ function Details() {
 
                 if (response.status === 204) {
                     //return to main page
+                    navigate(`/`);
                     console.log("success!")
                 } else {
                     console.log(response.status);
