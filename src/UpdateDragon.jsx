@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router";
 
 function UpdateDragon() {
-
     const [dragonDetail, setDragonDetails] = useState(null);
     const navigate = useNavigate();
     const params = useParams();
@@ -17,15 +16,12 @@ function UpdateDragon() {
 
             const data = await response.json();
             setDragonDetails(data);
-            console.log(dragonDetail);
+            // console.log(dragonDetail);
         } catch (e) {
             console.log(e);
         }
     };
 
-    useEffect(() => {
-        getDragon();
-    }, []);
 
     //update data through this
     async function updateDragon() {
@@ -52,11 +48,15 @@ function UpdateDragon() {
         }
     }
 
-    const [formData, setFormData] = useState({ //give this what we got from fetch
-        species: `New`, //${dragonDetails}
+    const [formData, setFormData] = useState({
+        species: `New`,
         desc: "New",
         dClass: "New",
     });
+
+    useEffect(() => {
+        getDragon();
+    }, []);
 
     const handleInputChange = (e) => {
         const {species, value} = e.target; //doesn't work here either
@@ -64,9 +64,11 @@ function UpdateDragon() {
             ...formData,
             [species]: value,
         });
-        console.log(formData.species);
+        console.log(formData);
         console.log(value);
     };
+
+    //last resort: make seperate functions for demonstration and show problem
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -83,11 +85,11 @@ function UpdateDragon() {
             </div>
             <div>
                 <label htmlFor="desc">Description:</label>
-                <input type="desc" id="desc" name="desc" value={formData.desc} onChange={handleInputChange}/>
+                <input type="text" id="desc" name="desc" value={formData.desc} onChange={handleInputChange}/>
             </div>
             <div>
                 <label htmlFor="dClass">Dragon class:</label>
-                <input type="dClass" id="dClass" name="dClass" value={formData.dClass}
+                <input type="text" id="dClass" name="dClass" value={formData.dClass}
                        onChange={handleInputChange}/>
             </div>
             <button type="submit">Update dragon data</button>

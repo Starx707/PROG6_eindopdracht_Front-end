@@ -30,13 +30,21 @@ function Home() {
                 {dragons ? (
                     <section>
                         {dragons.map((dragon) => (
-                            <div>
-                                <h2>{dragon.species}</h2>
+                            <div className="card">
+                                <div className="corner top left"></div>
+                                <div className="corner top right"></div>
+                                <div className="corner bottom left"></div>
+                                <div className="corner bottom right"></div>
+                                <h1>{dragon.species}</h1>
                                 <p>{dragon.dClass}</p>
                                 <p>{dragon.origin}</p>
                                 <p>{dragon.trainability}</p>
-                                <Link to={`/dragons/${dragon.id}`}>See details</Link>
 
+                                <button>
+                                    <span className="left"></span>
+                                    <span className="right"></span>
+                                    <Link to={`/dragons/${dragon.id}`}>See details</Link>
+                                </button>
                             </div>
                         ))}
                     </section>
