@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
-import {Link, Outlet} from "react-router";
+import {Link, Outlet, useNavigate} from "react-router";
 
 function Home() {
 
     const [dragons, setDragon] = useState(null);
+    const navigate = useNavigate();
+
     useEffect(() => {
         async function fetchProduct() {
             try {
@@ -15,6 +17,9 @@ function Home() {
                 });
                 const data = await response.json();
                 setDragon(data.items);
+                if (!data) {
+                    navigate('')
+                }
             } catch (error) {
                 console.error("There was a problem gathering the books:", error);
             }
@@ -26,7 +31,7 @@ function Home() {
     return (
         <>
             <h1>All dragons - Home</h1>
-            <div>
+            <div className={"cards"}>
                 {dragons ? (
                     <section>
                         {dragons.map((dragon) => (
@@ -43,7 +48,7 @@ function Home() {
                                 <button>
                                     <span className="left"></span>
                                     <span className="right"></span>
-                                    <Link to={`/dragons/${dragon.id}`}>See details</Link>
+                                    <Link to={`/dragons/${dragon.id}`} className={"secondary_button"}>See details</Link>
                                 </button>
                             </div>
                         ))}

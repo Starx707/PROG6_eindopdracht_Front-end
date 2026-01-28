@@ -14,7 +14,12 @@ function Details() {
                 },
             });
 
+            if (response.status === 404) {
+                navigate(`/404`);
+            }
             const data = await response.json();
+
+
             if (!data.error) {
                 setdetailsContainer(data);
             }
@@ -59,31 +64,32 @@ function Details() {
     return (
         <>
             {detailsContainer ? (
-                <article>
-                    <h2>{detailsContainer.species}</h2>
-                    <div>
-                        <div>Class:</div>
-                        <div>{detailsContainer.dClass}</div>
+                <div className={"details_card"}>
+                    <div className="card">
+                        <div className="corner top left"></div>
+                        <div className="corner top right"></div>
+                        <div className="corner bottom left"></div>
+                        <div className="corner bottom right"></div>
+                        <h1>{detailsContainer.species}</h1>
+                        <p>Class: {detailsContainer.dClass}</p>
+                        <p>Description: {detailsContainer.desc}</p>
+                        <p>Flock: {detailsContainer.flock}</p>
+                        <p>Origin: {detailsContainer.origin}</p>
+                        <p>Trainability: {detailsContainer.trainability}</p>
+                        <button>
+                            <span className="left"></span>
+                            <span className="right"></span>
+                            <Link to={`/delete/${detailsContainer.id}`}
+                                  className={"secondary_button detail_button"}>Delete</Link>
+                        </button>
+                        <button>
+                            <span className="left"></span>
+                            <span className="right"></span>
+                            <Link to={`/update/${detailsContainer.id}`}
+                                  className={"secondary_button detail_button"}>Change</Link>
+                        </button>
                     </div>
-                    <div>
-                        <div>Description:</div>
-                        <div>{detailsContainer.desc}</div>
-                    </div>
-                    <div>
-                        <div>Flock:</div>
-                        <div>{detailsContainer.flock}</div>
-                    </div>
-                    <div>
-                        <div>Origin:</div>
-                        <div>{detailsContainer.origin}</div>
-                    </div>
-                    <div>
-                        <div>Trainability:</div>
-                        <div>{detailsContainer.trainability}</div>
-                    </div>
-                    <Link to={`/delete/${detailsContainer.id}`}>Delete</Link>
-                    <Link to={`/update/${detailsContainer.id}`}>Change</Link>
-                </article>
+                </div>
             ) : (
                 <div>Loading data...</div>
             )}

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {useNavigate, useParams} from "react-router";
 
 function CreateProduct() {
@@ -35,10 +35,10 @@ function CreateProduct() {
     });
 
     const handleInputChange = (e) => {
-        const {dClass, value} = e.target; //this doesn't work? why?
+        const {name, value} = e.target;
         setFormData({
             ...formData,
-            [dClass]: value,
+            [name]: value,
         });
         console.log(formData.dClass);
         console.log(value);
@@ -52,19 +52,33 @@ function CreateProduct() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="species">Species:</label>
-                <input type="text" id="species" name="species" value={formData.species} onChange={handleInputChange}/>
+            <div className="card">
+                <div className="corner top left"></div>
+                <div className="corner top right"></div>
+                <div className="corner bottom left"></div>
+                <div className="corner bottom right"></div>
+                <div className={"sort_form"}>
+                    <div>
+                        <label htmlFor="species">Species:</label>
+                        <input type="text" id="species" name="species" value={formData.species}
+                               onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="desc">Description:</label>
+                        <input type="desc" id="desc" name="desc" value={formData.desc} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="dClass">Dragon class:</label>
+                        <input type="dClass" id="dClass" name="dClass" value={formData.dClass}
+                               onChange={handleInputChange}/>
+                    </div>
+                </div>
+                <button>
+                    <span className="left"></span>
+                    <span className="right"></span>
+                    <button type="submit">Send dragon</button>
+                </button>
             </div>
-            <div>
-                <label htmlFor="desc">Description:</label>
-                <input type="desc" id="desc" name="desc" value={formData.desc} onChange={handleInputChange}/>
-            </div>
-            <div>
-                <label htmlFor="dClass">Dragon class:</label>
-                <input type="dClass" id="dClass" name="dClass" value={formData.dClass} onChange={handleInputChange}/>
-            </div>
-            <button type="submit">Send dragon</button>
         </form>
     );
 

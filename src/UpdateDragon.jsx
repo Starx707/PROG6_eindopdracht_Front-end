@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router";
 
 function UpdateDragon() {
@@ -41,7 +41,7 @@ function UpdateDragon() {
                 navigate(`/dragons/${data.id}`);
             } else {
                 console.log("Not quite what was expected: ", response.status);
-                // console.log(`this is what we're sending: ${formData}`)
+                navigate(`/dragons/${data.id}`);
             }
         } catch (e) {
             console.error("Er is een fout opgetreden:", e);
@@ -52,6 +52,9 @@ function UpdateDragon() {
         species: `New`,
         desc: "New",
         dClass: "New",
+        flock: "?",
+        origin: "?",
+        trainability: "0"
     });
 
     useEffect(() => {
@@ -74,21 +77,48 @@ function UpdateDragon() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="species">Species:</label>
-                <input type="text" id="species" name="species" value={formData.species}
-                       onChange={handleInputChange}/>
+            <div className="card">
+                <div className="corner top left"></div>
+                <div className="corner top right"></div>
+                <div className="corner bottom left"></div>
+                <div className="corner bottom right"></div>
+                <div className={"sort_form"}>
+                    <div>
+                        <label htmlFor="species">Species:</label>
+                        <input type="text" id="species" name="species" value={formData.species}
+                               onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="desc">Description:</label>
+                        <input type="text" id="desc" name="desc" value={formData.desc} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="dClass">Dragon class:</label>
+                        <input type="text" id="dClass" name="dClass" value={formData.dClass}
+                               onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="flock">Flock:</label>
+                        <input type="text" id="flock" name="flock" value={formData.flock}
+                               onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="origin">Origin:</label>
+                        <input type="text" id="origin" name="origin" value={formData.origin}
+                               onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="trainability">Trainability:</label>
+                        <input type="text" id="trainability" name="trainability" value={formData.trainability}
+                               onChange={handleInputChange}/>
+                    </div>
+                </div>
+                <button>
+                    <span className="left"></span>
+                    <span className="right"></span>
+                    <button type="submit">Update dragon data</button>
+                </button>
             </div>
-            <div>
-                <label htmlFor="desc">Description:</label>
-                <input type="text" id="desc" name="desc" value={formData.desc} onChange={handleInputChange}/>
-            </div>
-            <div>
-                <label htmlFor="dClass">Dragon class:</label>
-                <input type="text" id="dClass" name="dClass" value={formData.dClass}
-                       onChange={handleInputChange}/>
-            </div>
-            <button type="submit">Update dragon data</button>
         </form>
     );
 

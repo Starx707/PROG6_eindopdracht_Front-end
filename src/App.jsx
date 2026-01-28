@@ -5,6 +5,7 @@ import CreateDragon from "./CreateDragon.jsx";
 import DetailsDragon from "./DetailsDragon.jsx";
 import DeleteDragon from "./DeleteDragon.jsx";
 import UpdateDragon from "./UpdateDragon.jsx";
+import ErrorPage from "./errorPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: "/update/:id",
                 element: <UpdateDragon/>,
+            },
+            {
+                path: "/404",
+                element: <ErrorPage/>,
             },
         ],
     },

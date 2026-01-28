@@ -5,8 +5,8 @@ function Layout() {
         <div>
             <header>
                 <nav>
-                    <Link to={`/`}>Home</Link>
-                    <Link to={`/create`}>New Dragon</Link>
+                    <Link to={`/`} className={"main_button"}>Home</Link>
+                    <Link to={`/create`} className={"main_button"}>New Dragon</Link>
                 </nav>
             </header>
             <main>
